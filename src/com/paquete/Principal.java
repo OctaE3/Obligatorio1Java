@@ -4,8 +4,7 @@ import com.paquete.persona.*;
 
 
 public class Principal {
-    static Arbitro[] listaArbitros = new Arbitro[3];
-    static List<Arbitro> lista2 = new ArrayList();
+    static List<Arbitro> listaArbitral = new ArrayList();
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
             System.out.println("┌─────────────────────┐");
@@ -107,9 +106,10 @@ public class Principal {
             System.out.println("Puesto");
             String puesto = scan.next();
             Arbitro arb = new Arbitro(nom,ape,puesto);
-            listaArbitros[i] = arb;
-            lista2.add(arb);
+            listaArbitral.add(arb);
+
         }
+        System.out.println(listaArbitral.toString());
     }
     public static void inicioPartido(){
         System.out.println("┌────────────────────────────────┐");
@@ -118,9 +118,6 @@ public class Principal {
         System.out.println("│ 3          Marcar Gol          │");
         System.out.println("│ 0       Finalizar partido      │");
         System.out.println("└────────────────────────────────┘");
-        for (int i = 0; i < listaArbitros.length; i++)
-        {
-            System.out.println(listaArbitros[i]);
-        }
+        System.out.println(listaArbitral.toString());
     }
 }
