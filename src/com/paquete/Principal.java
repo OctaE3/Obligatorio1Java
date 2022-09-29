@@ -1,8 +1,11 @@
 package com.paquete;
+import java.util.*;
+import com.paquete.persona.*;
 
-import java.util.Scanner;
 
 public class Principal {
+    static Arbitro[] listaArbitros = new Arbitro[3];
+    static List<Arbitro> lista2 = new ArrayList();
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
             System.out.println("┌─────────────────────┐");
@@ -93,8 +96,20 @@ public class Principal {
         System.out.println("bbcitaaaaaaa");
     }
     public static void agregarArbitral(){
-        byte contJugador = 0;
-        System.out.println("bbcitaaaaaaa");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ingrese los arbitros");
+        for (int i = 0; i < 3; i++)
+        {
+            System.out.println("Nombre");
+            String nom = scan.next();
+            System.out.println("Apellido");
+            String ape = scan.next();
+            System.out.println("Puesto");
+            String puesto = scan.next();
+            Arbitro arb = new Arbitro(nom,ape,puesto);
+            listaArbitros[i] = arb;
+            lista2.add(arb);
+        }
     }
     public static void inicioPartido(){
         System.out.println("┌────────────────────────────────┐");
@@ -103,6 +118,9 @@ public class Principal {
         System.out.println("│ 3          Marcar Gol          │");
         System.out.println("│ 0       Finalizar partido      │");
         System.out.println("└────────────────────────────────┘");
-
+        for (int i = 0; i < listaArbitros.length; i++)
+        {
+            System.out.println(listaArbitros[i]);
+        }
     }
 }
