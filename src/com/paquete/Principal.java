@@ -5,6 +5,8 @@ import com.paquete.persona.*;
 
 public class Principal {
     static List<Arbitro> listaArbitral = new ArrayList();
+    static List<Jugador> listaJugadoresEq1 = new ArrayList();
+    static List<Jugador> listaJugadoresEq2 = new ArrayList();
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
             System.out.println("┌─────────────────────┐");
@@ -57,7 +59,8 @@ public class Principal {
                     break;
                 case 2:
                 if(plantilla == false){
-                    agregarPlantilla();
+                    listaJugadoresEq1 = agregarPlantilla(equipo1);
+                    System.out.println(listaJugadoresEq1);
                     plantilla = true;
                 }
                 else{
@@ -87,9 +90,36 @@ public class Principal {
             }
         }
     }
-    public static void agregarPlantilla(){
-        byte contJugador = 0;
-        System.out.println("bbcitaaaaaaa");
+    public static List<Jugador> agregarPlantilla(String equipo){
+        Scanner scan = new Scanner(System.in);
+        int contJugador = 0;
+        List<Jugador> lista = new ArrayList();
+        List dorsales = new ArrayList();
+        System.out.println("Ingrese los 11 Jugadores Titulares del Equipo: " + equipo);
+        for(int i = 0; i < 2; i++)
+        {
+            System.out.println("Ingrese el nombre del jugador");
+            String nombre = scan.next();
+            System.out.println("Ingrese el apellido del jugador");
+            String apellido = scan.next();
+            System.out.println("Ingrese la edad del jugador");
+            byte edad = scan.nextByte();
+            System.out.println("Ingrese el puesto del jugador");
+            String puesto = scan.next();
+            System.out.println("Ingrese el dorsal del jugador");
+            byte dorsal = scan.nextByte();
+            if (dorsales.contains(dorsal)){
+                System.out.println("Ya se encuentra un Jugador con ese dorsal, Intente de nuevo");
+                i--;
+            }
+            else{
+                System.out.println();
+                Jugador jugador = new Jugador(nombre,apellido,edad,puesto,dorsal);
+                lista.add(jugador);
+                dorsales.add(dorsal);
+            }
+        }
+        return lista;
     }
     public static void agregarDatosPartido(){
         System.out.println("bbcitaaaaaaa");
@@ -119,5 +149,6 @@ public class Principal {
         System.out.println("│ 0       Finalizar partido      │");
         System.out.println("└────────────────────────────────┘");
         System.out.println(listaArbitral.toString());
+        System.out.println(listaJugadoresEq1.toString());
     }
 }
