@@ -1,4 +1,4 @@
-package com.paquete.persona;
+package com.paquete.clases;
 
 public class Arbitro {
     private String _nombre;

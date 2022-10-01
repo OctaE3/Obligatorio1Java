@@ -1,4 +1,4 @@
-package com.paquete.persona;
+package com.paquete.clases;
 
 public class Personal {
     private String _nombre;

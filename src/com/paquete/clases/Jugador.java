@@ -1,4 +1,4 @@
-package com.paquete.persona;
+package com.paquete.clases;
 
 public class Jugador extends Personal{
     private String _puesto;

@@ -1,12 +1,23 @@
 package com.paquete;
 import java.util.*;
-import com.paquete.persona.*;
+import com.paquete.clases.*;
 
 
 public class Principal {
     static List<Arbitro> listaArbitral = new ArrayList();
     static List<Jugador> listaJugadoresEq1 = new ArrayList();
     static List<Jugador> listaJugadoresEq2 = new ArrayList();
+    static DT TecnicoEq1 = new DT();
+
+    public static List<Jugador> listaJugadoresEquipo1()
+    {
+        return listaJugadoresEq1;
+    }
+
+    public static List<Jugador> listaJugadoresEquipo2()
+    {
+        return listaJugadoresEq2;
+    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
             System.out.println("┌─────────────────────┐");
@@ -60,6 +71,7 @@ public class Principal {
                 case 2:
                 if(plantilla == false){
                     listaJugadoresEq1 = agregarPlantilla(equipo1);
+
                     System.out.println(listaJugadoresEq1);
                     plantilla = true;
                 }
@@ -90,35 +102,55 @@ public class Principal {
             }
         }
     }
-    public static List<Jugador> agregarPlantilla(String equipo){
+    public static List<Jugador> agregarPlantilla(String equipo) {
         Scanner scan = new Scanner(System.in);
+        int fin = -1;
         int contJugador = 0;
         List<Jugador> lista = new ArrayList();
         List dorsales = new ArrayList();
-        System.out.println("Ingrese los 11 Jugadores Titulares del Equipo: " + equipo);
-        for(int i = 0; i < 2; i++)
+        while (fin != 0)
         {
-            System.out.println("Ingrese el nombre del jugador");
-            String nombre = scan.next();
-            System.out.println("Ingrese el apellido del jugador");
-            String apellido = scan.next();
-            System.out.println("Ingrese la edad del jugador");
-            byte edad = scan.nextByte();
-            System.out.println("Ingrese el puesto del jugador");
-            String puesto = scan.next();
-            System.out.println("Ingrese el dorsal del jugador");
-            byte dorsal = scan.nextByte();
-            if (dorsales.contains(dorsal)){
-                System.out.println("Ya se encuentra un Jugador con ese dorsal, Intente de nuevo");
-                i--;
-            }
-            else{
-                System.out.println();
-                Jugador jugador = new Jugador(nombre,apellido,edad,puesto,dorsal);
-                lista.add(jugador);
-                dorsales.add(dorsal);
+            System.out.println("┌────────────────────────────────┐");
+            System.out.println("│ 1   Agregar jugadores equipo "+ equipo + "│");
+            System.out.println("│ 2    Agregar suplentes equipo  │" + equipo);
+            System.out.println("│ 3       Agregar arbitral       │");
+            System.out.println("│ 0       Iniciar partido        │");
+            System.out.println("└────────────────────────────────┘");
+            byte opcion = scan.nextByte();
+            switch (opcion)
+            {
+                case 1:
+                    System.out.println("Ingrese los jugadores titulares del equipo: " +equipo1);
+
+                    break;
             }
         }
+
+
+
+//        for(int i = 0; i < 2; i++)
+//        {
+//            System.out.println("Ingrese el nombre del jugador");
+//            String nombre = scan.next();
+//            System.out.println("Ingrese el apellido del jugador");
+//            String apellido = scan.next();
+//            System.out.println("Ingrese la edad del jugador");
+//            byte edad = scan.nextByte();
+//            System.out.println("Ingrese el puesto del jugador");
+//            String puesto = scan.next();
+//            System.out.println("Ingrese el dorsal del jugador");
+//            byte dorsal = scan.nextByte();
+//            if (dorsales.contains(dorsal)){
+//                System.out.println("Ya se encuentra un Jugador con ese dorsal, Intente de nuevo");
+//                i--;
+//            }
+//            else{
+//                System.out.println();
+//                Jugador jugador = new Jugador(nombre,apellido,edad,puesto,dorsal);
+//                lista.add(jugador);
+//                dorsales.add(dorsal);
+//            }
+//        }
         return lista;
     }
     public static void agregarDatosPartido(){
