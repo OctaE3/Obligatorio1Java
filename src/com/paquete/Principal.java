@@ -1,23 +1,13 @@
 package com.paquete;
 import java.util.*;
 import com.paquete.clases.*;
-
+import com.paquete.metodos.Controladora;
 
 public class Principal {
     static List<Arbitro> listaArbitral = new ArrayList();
-    static List<Jugador> listaJugadoresEq1 = new ArrayList();
-    static List<Jugador> listaJugadoresEq2 = new ArrayList();
-    static DT TecnicoEq1 = new DT();
+    static Equipo Equipo1 = new Equipo();
+    static Equipo Equipo2 = new Equipo();
 
-    public static List<Jugador> listaJugadoresEquipo1()
-    {
-        return listaJugadoresEq1;
-    }
-
-    public static List<Jugador> listaJugadoresEquipo2()
-    {
-        return listaJugadoresEq2;
-    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
             System.out.println("┌─────────────────────┐");
@@ -34,8 +24,8 @@ public class Principal {
                     break;
             }
     }
-    static String equipo1 = "";
-    static String equipo2 = "";
+    public static String equipo1 = "";
+    public static String equipo2 = "";
     public static void partido(){
         Scanner scan = new Scanner(System.in);
         boolean plantilla = false;
@@ -61,7 +51,7 @@ public class Principal {
             switch (opcion){
                 case 1:
                     if(partido == false){
-                        agregarDatosPartido();
+
                         partido = true;
                     }
                     else{
@@ -70,10 +60,12 @@ public class Principal {
                     break;
                 case 2:
                 if(plantilla == false){
-                    listaJugadoresEq1 = agregarPlantilla(equipo1);
-
-                    System.out.println(listaJugadoresEq1);
-                    plantilla = true;
+                    boolean eq1 = Controladora.ingresarEquipo1();
+                    boolean eq2 = Controladora.ingresarEquipo2();
+                    Equipo1 = Controladora.equipo1();
+                    Equipo2 = Controladora.equipo2();
+                    if (eq1 == true && eq2 == true)
+                        plantilla = true;
                 }
                 else{
                     System.out.println("La planilla ya fue ingresada");
@@ -81,7 +73,7 @@ public class Principal {
                 break;
                 case 3:
                 if(arbitral == false){
-                    agregarArbitral();
+                    listaArbitral = Controladora.agregarArbitros();
                     arbitral = true;
                 }
                 else{
@@ -102,77 +94,7 @@ public class Principal {
             }
         }
     }
-    public static List<Jugador> agregarPlantilla(String equipo) {
-        Scanner scan = new Scanner(System.in);
-        int fin = -1;
-        int contJugador = 0;
-        List<Jugador> lista = new ArrayList();
-        List dorsales = new ArrayList();
-        while (fin != 0)
-        {
-            System.out.println("┌────────────────────────────────┐");
-            System.out.println("│ 1   Agregar jugadores equipo "+ equipo + "│");
-            System.out.println("│ 2    Agregar suplentes equipo  │" + equipo);
-            System.out.println("│ 3       Agregar arbitral       │");
-            System.out.println("│ 0       Iniciar partido        │");
-            System.out.println("└────────────────────────────────┘");
-            byte opcion = scan.nextByte();
-            switch (opcion)
-            {
-                case 1:
-                    System.out.println("Ingrese los jugadores titulares del equipo: " +equipo1);
 
-                    break;
-            }
-        }
-
-
-
-//        for(int i = 0; i < 2; i++)
-//        {
-//            System.out.println("Ingrese el nombre del jugador");
-//            String nombre = scan.next();
-//            System.out.println("Ingrese el apellido del jugador");
-//            String apellido = scan.next();
-//            System.out.println("Ingrese la edad del jugador");
-//            byte edad = scan.nextByte();
-//            System.out.println("Ingrese el puesto del jugador");
-//            String puesto = scan.next();
-//            System.out.println("Ingrese el dorsal del jugador");
-//            byte dorsal = scan.nextByte();
-//            if (dorsales.contains(dorsal)){
-//                System.out.println("Ya se encuentra un Jugador con ese dorsal, Intente de nuevo");
-//                i--;
-//            }
-//            else{
-//                System.out.println();
-//                Jugador jugador = new Jugador(nombre,apellido,edad,puesto,dorsal);
-//                lista.add(jugador);
-//                dorsales.add(dorsal);
-//            }
-//        }
-        return lista;
-    }
-    public static void agregarDatosPartido(){
-        System.out.println("bbcitaaaaaaa");
-    }
-    public static void agregarArbitral(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese los arbitros");
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.println("Nombre");
-            String nom = scan.next();
-            System.out.println("Apellido");
-            String ape = scan.next();
-            System.out.println("Puesto");
-            String puesto = scan.next();
-            Arbitro arb = new Arbitro(nom,ape,puesto);
-            listaArbitral.add(arb);
-
-        }
-        System.out.println(listaArbitral.toString());
-    }
     public static void inicioPartido(){
         System.out.println("┌────────────────────────────────┐");
         System.out.println("│ 1       Listar encuentro       │");
@@ -180,7 +102,5 @@ public class Principal {
         System.out.println("│ 3          Marcar Gol          │");
         System.out.println("│ 0       Finalizar partido      │");
         System.out.println("└────────────────────────────────┘");
-        System.out.println(listaArbitral.toString());
-        System.out.println(listaJugadoresEq1.toString());
     }
 }
