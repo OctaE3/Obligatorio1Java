@@ -105,7 +105,7 @@ public class Principal {
                     Controladora.listarEncuentro();
                     break;
                 case 2:
-
+                    Controladora.cambiarJugador();
                     break;
                 case 3:
                     Controladora.expulsarJugador();
@@ -114,7 +114,7 @@ public class Principal {
 
                     break;
                 case 0:
-
+                    fin = 0;
                     break;
                 default:
                     System.out.println("Opción no valida");

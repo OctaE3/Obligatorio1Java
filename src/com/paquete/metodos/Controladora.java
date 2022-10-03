@@ -259,11 +259,9 @@ public class Controladora {
 
     public static boolean expulsarJugador() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese el numero del equipo, en el que se encuentra el jugador");
-        System.out.println("┌─────────────────────────────────┐");
-        System.out.println("│1. " + equipo1().get_nombre() + "│");
-        System.out.println("│2. " + equipo1().get_nombre() + "│");
-        System.out.println("└─────────────────────────────────┘");
+        System.out.println("Ingrese el número del equipo, en el que se encuentra el jugador");
+        System.out.println("1. " + equipo1().get_nombre());
+        System.out.println("2. " + equipo1().get_nombre());
         byte opcion = scan.nextByte();
 
         System.out.println("Ingrese el dorsal del jugador");
@@ -309,6 +307,96 @@ public class Controladora {
         }
     }
 
+    public static boolean cambiarJugador() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ingrese el número del equipo, en el que se encuentra el jugador que desea sustituir ");
+        System.out.println("1. " + equipo1().get_nombre());
+        System.out.println("2. " + equipo1().get_nombre());
+        byte opcion = scan.nextByte();
+
+        System.out.println("Ingrese el dorsal del jugador titular");
+        byte dorsalTitular = scan.nextByte();
+
+        System.out.println("Ingrese el dorsal del jugador suplente");
+        byte dorsalSuplente = scan.nextByte();
+
+        Jugador jugador = new Jugador();
+        Jugador jogador = new Jugador();
+
+        boolean jgT = false;
+        boolean jgS = false;
+
+        if (opcion == 1)
+        {
+            for(Jugador unJugador : listaJugadoresTitularesEq1)
+            {
+                if(unJugador.get_numero() == dorsalTitular)
+                {
+                    jugador = unJugador;
+                    jgT = true;
+                }
+            }
+            for(Jugador unJogador : listaJugadoresSuplentesEq1)
+            {
+                if (unJogador.get_numero() == dorsalSuplente)
+                {
+                    jogador = unJogador;
+                    jgS = true;
+                }
+            }
+            if (jgT == true && jgS == true)
+            {
+                Equipo1.get_listaTitulares().remove(jugador);
+                Equipo1.get_listaTitulares().add(jogador);
+                Equipo1.get_listaSuplentes().remove(jogador);
+                Equipo1.get_listaSuplentes().add(jugador);
+                return true;
+            }
+            else
+            {
+                System.out.println("Uno de los dorsale no es correcto!");
+                return false;
+            }
+        }
+        else if(opcion == 2)
+        {
+            for(Jugador unJugador : listaJugadoresTitularesEq2)
+            {
+                if(unJugador.get_numero() == dorsalTitular)
+                {
+                    jugador = unJugador;
+                    jgT = true;
+                }
+            }
+            for(Jugador unJogador : listaJugadoresSuplentesEq2)
+            {
+                if (unJogador.get_numero() == dorsalSuplente)
+                {
+                    jogador = unJogador;
+                    jgS = true;
+                }
+            }
+            if (jgT == true && jgS == true)
+            {
+                Equipo2.get_listaTitulares().remove(jugador);
+                Equipo2.get_listaTitulares().add(jogador);
+                Equipo2.get_listaSuplentes().remove(jogador);
+                Equipo2.get_listaSuplentes().add(jugador);
+                return true;
+            }
+            else
+            {
+                System.out.println("Uno de los dorsale no es correcto!");
+                return false;
+            }
+        }
+        else
+        {
+            System.out.println("Ese equipo no existe, intente nuevamente");
+            return false;
+        }
+    }
+
     public static void agregarPartido() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Ingrese los datos del partido");
@@ -327,6 +415,10 @@ public class Controladora {
     }
 
     public static void listarEncuentro() {
+        System.out.println("Partido: " + equipo1().get_nombre() + " vs " + equipo2().get_nombre());
+        System.out.println("Estadio");
+        System.out.println(partido().get_estadio());
+        System.out.println("─────────────────────────────────");
         System.out.println(equipo1().get_nombre());
         System.out.println("Titulares");
         System.out.println(listaJugadoresTitularesEq1);
