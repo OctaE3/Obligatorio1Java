@@ -4,7 +4,7 @@ public class DT extends Personal{
 
     @Override
     public String toString() {
-        return "DT{}";
+        return super.toString();
     }
 
     public DT(){};

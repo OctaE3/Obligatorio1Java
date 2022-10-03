@@ -31,11 +31,10 @@ public class Personal {
 
     @Override
     public String toString() {
-        return "Personal{" +
+        return
                 "Nombre: '" + _nombre + '\'' +
                 ", Apellido: '" + _apellido + '\'' +
-                ", Edad: " + _edad +
-                '}';
+                ", Edad: " + _edad;
     }
 
     public Personal(){};

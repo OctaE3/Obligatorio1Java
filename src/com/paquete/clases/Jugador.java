@@ -22,10 +22,9 @@ public class Jugador extends Personal{
 
     @Override
     public String toString() {
-        return "Jugador{" +
-                "Puesto: '" + _puesto + '\'' +
-                ", Numero: " + _numero +
-                '}';
+        return super.toString() +
+                " Puesto: '" + _puesto + '\'' +
+                ", Numero: " + _numero;
     }
 
     public Jugador(){};

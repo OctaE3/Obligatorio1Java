@@ -31,11 +31,10 @@ public class Arbitro {
 
     @Override
     public String toString() {
-        return "Arbitro{" +
+        return
                 "Nombre: '" + _nombre + '\'' +
                 ", Apellido: '" + _apellido + '\'' +
-                ", Puesto: '" + _puesto + '\'' +
-                '}';
+                ", Puesto: '" + _puesto + '\'';
     }
 
     public Arbitro(){};
