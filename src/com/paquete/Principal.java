@@ -111,7 +111,7 @@ public class Principal {
                     Controladora.expulsarJugador();
                     break;
                 case 4:
-
+                    Controladora.marcarGol();
                     break;
                 case 0:
                     fin = 0;
@@ -121,5 +121,6 @@ public class Principal {
                     break;
             }
         }
+        Controladora.finalizarPartido();
     }
 }

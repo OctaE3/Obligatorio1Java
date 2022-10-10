@@ -4,6 +4,8 @@ public class Jugador extends Personal{
     private String _puesto;
     private byte _numero;
 
+    private int _gol;
+
     public String get_puesto() {
         return _puesto;
     }
@@ -14,6 +16,14 @@ public class Jugador extends Personal{
 
     public byte get_numero() {
         return _numero;
+    }
+
+    public int get_gol() {
+        return _gol;
+    }
+
+    public void set_gol(int _gol) {
+        this._gol = _gol;
     }
 
     public void set_numero(byte _numero) {
@@ -29,9 +39,10 @@ public class Jugador extends Personal{
 
     public Jugador(){};
 
-    public Jugador(String pNombre, String pApellido, byte pEdad, String pPuesto, byte pNumero) {
+    public Jugador(String pNombre, String pApellido, byte pEdad, String pPuesto, byte pNumero, int pGol) {
         super(pNombre, pApellido, pEdad);
         this._puesto = pPuesto;
         this._numero = pNumero;
+        this._gol =pGol;
     }
 }
