@@ -9,7 +9,6 @@ public class Principal {
     static List<Arbitro> listaArbitral = new ArrayList();
     static Equipo Equipo1 = new Equipo();
     static Equipo Equipo2 = new Equipo();
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("┌────────────────────────┐");
@@ -19,7 +18,6 @@ public class Principal {
     }
     public static String equipo1 = "";
     public static String equipo2 = "";
-
     public static void partido() {
         Scanner scan = new Scanner(System.in);
         boolean plantilla = false;
@@ -87,7 +85,6 @@ public class Principal {
             }
         }
     }
-
     public static void inicioPartido() {
         Scanner scan = new Scanner(System.in);
         byte fin = -1;

@@ -36,6 +36,12 @@ public class Jugador extends Personal{
                 " Puesto: '" + _puesto + '\'' +
                 ", Numero: " + _numero;
     }
+    public String Goleadores() {
+        return super.toString() +
+                " Goles: '" + _gol + '\'' +
+                ", Numero: " + _numero;
+
+    }
 
     public Jugador(){};
 

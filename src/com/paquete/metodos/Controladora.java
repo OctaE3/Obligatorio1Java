@@ -9,43 +9,42 @@ import jdk.swing.interop.SwingInterOpUtils;
 
 public class Controladora {
 
-    private static Partido Partido = new Partido();
-    private static Equipo Equipo1 = new Equipo();
-    static List<Jugador> listaJugadoresTitularesEq1 = new ArrayList();
-    static List<Jugador> listaJugadoresSuplentesEq1 = new ArrayList();
-    static List<Jugador> listaJugadoresGoleadoresEq1 = new ArrayList();
-    private static Equipo Equipo2 = new Equipo();
-    static List<Jugador> listaJugadoresTitularesEq2 = new ArrayList();
-    static List<Jugador> listaJugadoresSuplentesEq2 = new ArrayList();
-    static List<Jugador> listaJugadoresGoleadoresEq2 = new ArrayList();
-    static List<Arbitro> listaArbitral = new ArrayList();
-    private static List<Jugador> listaJugadoresExpulsados = new ArrayList();
-
-    public static Partido partido() {
-        return Partido;
-    }
-
-    public static Equipo equipo1() {
-        return Equipo1;
-    }
-
-    public static Equipo equipo2() {
-        return Equipo2;
-    }
-
+    //region Listas e Instancias
+    private static Partido Partido = new Partido(); //Instancia Partido
+    private static Equipo Equipo1 = new Equipo();   //Instancia Equipo 1
+    private static Equipo Equipo2 = new Equipo();   //Instancia Equipo 2
+    static List<Arbitro> listaArbitral = new ArrayList();   //Lista de los árbitros
+    static List<Jugador> listaJugadoresTitularesEq1 = new ArrayList();  //Lista de los jugadores titulares del equipo 1
+    static List<Jugador> listaJugadoresSuplentesEq1 = new ArrayList();  //Lista de los jugadores suplentes del equipo 1
+    static List<Jugador> listaJugadoresGoleadoresEq1 = new ArrayList(); //Lista de los jugadores goleadores del equipo 1
+    static List<Jugador> listaJugadoresTitularesEq2 = new ArrayList(); //Lista de los jugadores titulares del equipo 2
+    static List<Jugador> listaJugadoresSuplentesEq2 = new ArrayList();  //Lista de los jugadores suplentes del equipo 2
+    static List<Jugador> listaJugadoresGoleadoresEq2 = new ArrayList(); //Lista de los jugadores goleadores del equipo 2
+    private static List<Jugador> listaJugadoresExpulsados = new ArrayList(); //Lista de jugadores expulsados
+    //endregion
     public static List<Jugador> listarJugadoresExpulsados() {
         return listaJugadoresExpulsados;
     }
-
+    public static Partido partido() {
+        return Partido;
+    }
+    public static Equipo equipo1() {
+        return Equipo1;
+    }
+    public static Equipo equipo2() {
+        return Equipo2;
+    }
     public static List<Arbitro> agregarArbitros() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese los arbitros");
+        System.out.println("┌──────────────────────┐");
+        System.out.println("│ Ingrese los árbitros │");
+        System.out.println("└──────────────────────┘");
         for (int i = 0; i < 2; i++) {
-            System.out.println("Nombre");
+            System.out.println("** Nombre **");
             String nom = scan.next();
-            System.out.println("Apellido");
+            System.out.println("** Apellido **");
             String ape = scan.next();
-            System.out.println("Puesto");
+            System.out.println("** Puesto **");
             String puesto = scan.next();
             Arbitro arb = new Arbitro(nom, ape, puesto);
             listaArbitral.add(arb);
@@ -53,45 +52,44 @@ public class Controladora {
         }
         return listaArbitral;
     }
-
     public static boolean ingresarEquipo1() {
         String nombre = Principal.equipo1;
         byte gol = 0;
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese los Datos de " + nombre);
-        System.out.println("");
+        System.out.println("** Ingrese los Datos de " + nombre +" **");
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
 
-        System.out.println("Ingrese los datos del Director Técnico");
+        System.out.println("** Ingrese los datos del Director Técnico **");
 
-        System.out.println("Nombre del director técnico");
+        System.out.println("** Nombre del director técnico **");
         String nombreTecnico = scan.next();
 
-        System.out.println("Apellido del director técnico");
+        System.out.println("** Apellido del director técnico **");
         String apellidoTecnico = scan.next();
 
-        System.out.println("Edad del director técnico");
+        System.out.println("** Edad del director técnico ** ");
         byte edadTecnico = scan.nextByte();
 
         DT TecnicoEq1 = new DT(nombreTecnico, apellidoTecnico, edadTecnico);
-
-        System.out.println("Ingrese los Jugadores Titulares");
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
+        System.out.println("** Ingrese los Jugadores Titulares **");
         System.out.println("");
         for (int i = 0; i < 2; i++) {
-            System.out.println("Ingrese el nombre del jugador");
+            System.out.println("** Ingrese el nombre del jugador **");
             String nombreTitular = scan.next();
 
-            System.out.println("Ingrese el apellido del jugador");
+            System.out.println("** Ingrese el apellido del jugador **");
             String apellidoTitular = scan.next();
 
-            System.out.println("Ingrese la edad del jugador");
+            System.out.println("** Ingrese la edad del jugador **");
             byte edadTitular = scan.nextByte();
 
-            System.out.println("Ingrese el puesto del jugador");
+            System.out.println("** Ingrese el puesto del jugador **");
             String puestoTitular = scan.next();
 
-            System.out.println("Ingrese el dorsal del jugador");
+            System.out.println("** Ingrese el dorsal del jugador **");
             byte dorsalTitular = scan.nextByte();
-
+            System.out.println("────────────────────────────────");
 
             if (listaJugadoresTitularesEq1.size() == 0) {
                 Jugador jugador = new Jugador(nombreTitular, apellidoTitular, edadTitular, puestoTitular, dorsalTitular, gol);
@@ -112,24 +110,25 @@ public class Controladora {
                 }
             }
         }
-        System.out.println("Ingrese los datos de los jugadores suplentes");
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
+        System.out.println("** Ingrese los datos de los jugadores suplentes **");
         System.out.println("");
         for (int i = 0; i < 1; i++) {
-            System.out.println("Ingrese el nombre del jugador");
+            System.out.println("** Ingrese el nombre del jugador **");
             String nombreSuplente = scan.next();
 
-            System.out.println("Ingrese el apellido del jugador");
+            System.out.println("** Ingrese el apellido del jugador **");
             String apellidoSuplente = scan.next();
 
-            System.out.println("Ingrese la edad del jugador");
+            System.out.println("** Ingrese la edad del jugador **");
             byte edadSuplente = scan.nextByte();
 
-            System.out.println("Ingrese el puesto del jugador");
+            System.out.println("** Ingrese el puesto del jugador **");
             String puestoSuplente = scan.next();
 
-            System.out.println("Ingrese el dorsal del jugador");
+            System.out.println("** Ingrese el dorsal del jugador **");
             byte dorsalSuplente = scan.nextByte();
-
+            System.out.println("────────────────────────────────");
             boolean repetidoT = false;
             boolean repetidoS = false;
             for (Jugador unJugador : listaJugadoresTitularesEq1) {
@@ -158,44 +157,44 @@ public class Controladora {
         }
         return false;
     }
-
     public static boolean ingresarEquipo2() {
         String nombre = Principal.equipo2;
         Scanner scan = new Scanner(System.in);
         byte gol = 0;
-        System.out.println("Ingrese los Datos de " + nombre);
-        System.out.println("");
+        System.out.println("** Ingrese los Datos de " + nombre + " **");
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
 
-        System.out.println("Ingrese los datos del Director Técnico");
+        System.out.println("** Ingrese los datos del Director Técnico **");
 
-        System.out.println("Nombre del director técnico");
+        System.out.println("** Nombre del director técnico **");
         String nombreTecnico = scan.next();
 
-        System.out.println("Apellido del director técnico");
+        System.out.println("** Apellido del director técnico **");
         String apellidoTecnico = scan.next();
 
-        System.out.println("Edad del director técnico");
+        System.out.println("** Edad del director técnico **");
         byte edadTecnico = scan.nextByte();
 
         DT TecnicoEq2 = new DT(nombreTecnico, apellidoTecnico, edadTecnico);
-
-        System.out.println("Ingrese los Jugadores Titulares");
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
+        System.out.println("** Ingrese los Jugadores Titulares **");
         System.out.println("");
         for (int i = 0; i < 2; i++) {
-            System.out.println("Ingrese el nombre del jugador");
+            System.out.println("** Ingrese el nombre del jugador **");
             String nombreTitular = scan.next();
 
-            System.out.println("Ingrese el apellido del jugador");
+            System.out.println("** Ingrese el apellido del jugador **");
             String apellidoTitular = scan.next();
 
-            System.out.println("Ingrese la edad del jugador");
+            System.out.println("** Ingrese la edad del jugador **");
             byte edadTitular = scan.nextByte();
 
-            System.out.println("Ingrese el puesto del jugador");
+            System.out.println("** Ingrese el puesto del jugador **");
             String puestoTitular = scan.next();
 
-            System.out.println("Ingrese el dorsal del jugador");
+            System.out.println("** Ingrese el dorsal del jugador **");
             byte dorsalTitular = scan.nextByte();
+            System.out.println("────────────────────────────────");
 
             if (listaJugadoresTitularesEq2.size() == 0) {
                 Jugador jugador = new Jugador(nombreTitular, apellidoTitular, edadTitular, puestoTitular, dorsalTitular, gol);
@@ -216,6 +215,7 @@ public class Controladora {
                 }
             }
         }
+        System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
         System.out.println("Ingrese los datos de los jugadores suplentes");
         System.out.println("");
         for (int i = 0; i < 1; i++) {
@@ -233,7 +233,7 @@ public class Controladora {
 
             System.out.println("Ingrese el dorsal del jugador");
             byte dorsalSuplente = scan.nextByte();
-
+            System.out.println("────────────────────────────────");
             boolean repetidoT = false;
             boolean repetidoS = false;
             for (Jugador unJugador : listaJugadoresTitularesEq2) {
@@ -262,7 +262,6 @@ public class Controladora {
         }
         return false;
     }
-
     public static boolean expulsarJugador() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Ingrese el número del equipo, en el que se encuentra el jugador");
@@ -312,12 +311,11 @@ public class Controladora {
             return false;
         }
     }
-
     public static boolean cambiarJugador() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Ingrese el número del equipo, en el que se encuentra el jugador que desea sustituir ");
         System.out.println("1. " + equipo1().get_nombre());
-        System.out.println("2. " + equipo1().get_nombre());
+        System.out.println("2. " + equipo2().get_nombre());
         byte opcion = scan.nextByte();
 
         System.out.println("Ingrese el dorsal del jugador titular");
@@ -402,24 +400,23 @@ public class Controladora {
             return false;
         }
     }
-
     public static void agregarPartido() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese los datos del partido");
-        System.out.println("");
-        System.out.println("Ingrese el estadio donde se disputa el encuentro");
+        System.out.println("┌───────────────────────────────┐");
+        System.out.println("│ Ingrese los datos del partido │");
+        System.out.println("└───────────────────────────────┘");
+        System.out.println("** Ingrese el estadio donde se disputa el encuentro **");
         String estadio = scan.next();
-        System.out.println("Ingrese el dia del encuentro");
+        System.out.println("** Ingrese el dia del encuentro **");
         String dia = scan.next();
-        System.out.println("Ingrese la hora del encuentro");
+        System.out.println("** Ingrese la hora del encuentro **");
         String hora = scan.next();
-        System.out.println("Ingrese el clima");
+        System.out.println("** Ingrese el clima **");
         String clima = scan.next();
         String minutos = "";
         Partido partido = new Partido(estadio, dia, hora, clima, minutos);
         Partido = partido;
     }
-
     public static void listarEncuentro() {
         System.out.println("Partido: " + equipo1().get_nombre() + " vs " + equipo2().get_nombre());
         System.out.println("Estadio");
@@ -427,109 +424,156 @@ public class Controladora {
         System.out.println("─────────────────────────────────");
         System.out.println(equipo1().get_nombre());
         System.out.println("Titulares");
-        System.out.println(listaJugadoresTitularesEq1);
+        for(Jugador unJugador : listaJugadoresTitularesEq1){
+            System.out.println(unJugador.toString());
+        }
         System.out.println("Suplentes");
-        System.out.println(listaJugadoresSuplentesEq1);
+        for(Jugador unJugador : listaJugadoresSuplentesEq1){
+            System.out.println(unJugador.toString());
+        }
         System.out.println("Técnico");
         System.out.println(equipo1().get_tecnico());
         System.out.println("─────────────────────────────────");
         System.out.println(equipo2().get_nombre());
         System.out.println("Titulares");
-        System.out.println(listaJugadoresTitularesEq2);
+        for(Jugador unJugador : listaJugadoresTitularesEq2){
+            System.out.println(unJugador.toString());
+        }
         System.out.println("Suplentes");
-        System.out.println(listaJugadoresSuplentesEq2);
+        for(Jugador unJugador : listaJugadoresSuplentesEq2){
+            System.out.println(unJugador.toString());
+        }
         System.out.println("Técnico");
         System.out.println(equipo2().get_tecnico());
     }
-
     public static void marcarGol() {
         Scanner scan = new Scanner(System.in);
+        Jugador jugadoraso = new Jugador();
         boolean yaGol = false;
-        byte cont = 0;
-        System.out.println("Que EQUIPO metió gol?");
+        boolean jugadorExistente = false;
+        System.out.println("** Que EQUIPO metió gol **?");
         System.out.println("1- " + equipo1().get_nombre());
         System.out.println("2- " + equipo2().get_nombre());
         byte equip = scan.nextByte();
-        System.out.println("Que JUGADOR metió gol? (Número de la camiseta)");
+        System.out.println("** Que JUGADOR metió gol? (Número de la camiseta) **");
         byte jugadorNum = scan.nextByte();
-        if (equip == 1) {
-            for (Jugador unJugador : listaJugadoresTitularesEq1) {
-                if (unJugador.get_numero() == jugadorNum) {
-                    if (listaJugadoresGoleadoresEq1.size() == 0) {
-                        listaJugadoresGoleadoresEq1.add(unJugador);
-                    } else {
-                        yaGol = true;
-                    }
-                } else {
-                    cont++;
-                }
-            }
-            if (yaGol == true) {
-                for (Jugador unGoleador : listaJugadoresGoleadoresEq1) {
-                    if (unGoleador.get_numero() == jugadorNum) {
-                        int goles = unGoleador.get_gol() + 1;
-                        unGoleador.set_gol(goles);
-                    }
-                }
-            }
-        }
-        else if (equip == 2) {
-            for (Jugador unJugador : listaJugadoresTitularesEq2) {
-                if (unJugador.get_numero() == jugadorNum) {
-                    if (listaJugadoresGoleadoresEq2.size() == 0) {
-                        listaJugadoresGoleadoresEq2.add(unJugador);
-                    } else {
-                        yaGol = true;
-                    }
-                } else {
-                    cont++;
-                }
-            }
-            if (yaGol == true) {
-                for (Jugador unGoleador : listaJugadoresGoleadoresEq2) {
-                    if (unGoleador.get_numero() == jugadorNum) {
-                        int goles = unGoleador.get_gol() + 1;
-                        unGoleador.set_gol(goles);
-                    }
-                }
-            }
-        }
-        else {
-            System.out.println("Opciones de quipo 1 o 2");
-        }
-        if (cont == 11) {
-            System.out.println("Jugador inexistente");
-        }
+       switch (equip){
+           case 1:
+               for (Jugador unJugador: listaJugadoresTitularesEq1) {
+                   if(unJugador.get_numero() == jugadorNum){
+                       jugadorExistente = true;
+                       jugadoraso = unJugador;
+                       jugadoraso.set_gol(jugadoraso.get_gol() + 1);
+                   }
+               }
+               if(jugadorExistente == true){
+                   if(listaJugadoresGoleadoresEq1.size() == 0){
+                       listaJugadoresGoleadoresEq1.add(jugadoraso);
+                   }
+                   else{
+                       for (Jugador Goleador : listaJugadoresGoleadoresEq1) {
+                           if(Goleador.get_numero() == jugadoraso.get_numero()){
+                               yaGol = true;
+                           }
+                       }
+                       if(yaGol == true){
+                           for (Jugador Goleador : listaJugadoresGoleadoresEq1){
+                               if(Goleador.get_numero() == jugadoraso.get_numero()){
+                                   Goleador.set_gol(jugadoraso.get_gol());
+                               }
+                           }
+                       }
+                       else{
+                           listaJugadoresGoleadoresEq1.add(jugadoraso);
+                       }
+                   }
+               }
+               else{
+                   System.out.println("No se a encontrado el jugador");
+               }
+               break;
+           case 2:
+               for (Jugador unJugador: listaJugadoresTitularesEq2) {
+                   if(unJugador.get_numero() == jugadorNum){
+                       jugadorExistente = true;
+                       jugadoraso = unJugador;
+                       jugadoraso.set_gol(jugadoraso.get_gol() + 1);
+                   }
+               }
+               if(jugadorExistente == true){
+                   if(listaJugadoresGoleadoresEq2.size() == 0){
+                       listaJugadoresGoleadoresEq2.add(jugadoraso);
+                   }
+                   else{
+                       for (Jugador Goleador : listaJugadoresGoleadoresEq2) {
+                           if(Goleador.get_numero() == jugadoraso.get_numero()){
+                               yaGol = true;
+                           }
+                       }
+                       if(yaGol == true){
+                           for (Jugador Goleador : listaJugadoresGoleadoresEq2){
+                               if(Goleador.get_numero() == jugadoraso.get_numero()){
+                                   Goleador.set_gol(jugadoraso.get_gol());
+                               }
+                           }
+                       }
+                       else{
+                           listaJugadoresGoleadoresEq2.add(jugadoraso);
+                       }
+                   }
+               }
+               else{
+                   System.out.println("No se a encontrado el jugador");
+               }
+               break;
+           default:
+               System.out.println("Equipo invalido");
+               break;
+       }
     }
-
     public  static void finalizarPartido(){
         Scanner scan = new Scanner(System.in);
         byte fin = - 1;
         while(fin != 0) {
-            System.out.println("Partido Finalizado");
-            System.out.println("1- Listar Jugadores");
-            System.out.println("2- Listar Goleadores");
-            System.out.println("3- Salir");
+            System.out.println("┌──────────────────────────┐");
+            System.out.println("│ ** Partido Finalizado ** │");
+            System.out.println("│    1- Listar Jugadores   │");
+            System.out.println("│    2- Listar Goleadores  │");
+            System.out.println("│    3-     Salir          │");
+            System.out.println("└──────────────────────────┘");
+
             byte opcion = scan.nextByte();
             switch (opcion) {
                 case 1:
                     System.out.println(equipo1().get_nombre());
                     System.out.println("Titulares");
-                    System.out.println(listaJugadoresTitularesEq1);
+                    for(Jugador unJugador : listaJugadoresTitularesEq1){
+                        System.out.println(unJugador.toString());
+                    }
                     System.out.println("Suplentes");
-                    System.out.println(listaJugadoresSuplentesEq1);
+                    for(Jugador unJugador : listaJugadoresSuplentesEq1){
+                        System.out.println(unJugador.toString());
+                    }
                     System.out.println("--------------------");
                     System.out.println(equipo2().get_nombre());
                     System.out.println("Titulares");
-                    System.out.println(listaJugadoresTitularesEq2);
+                    for(Jugador unJugador : listaJugadoresTitularesEq2){
+                        System.out.println(unJugador.toString());
+                    }
                     System.out.println("Suplentes");
-                    System.out.println(listaJugadoresSuplentesEq2);
+                    for(Jugador unJugador : listaJugadoresSuplentesEq2){
+                        System.out.println(unJugador.toString());
+                    }
                     break;
                 case 2:
                     System.out.println("Goleadores: " + equipo1().get_nombre());
-                    System.out.println(listaJugadoresGoleadoresEq1);
+                    for(Jugador unJugador : listaJugadoresGoleadoresEq1){
+                        System.out.println(unJugador.Goleadores());
+                    }
                     System.out.println("Goleadores: " + equipo2().get_nombre());
-                    System.out.println(listaJugadoresGoleadoresEq2);
+                    for(Jugador unJugador : listaJugadoresGoleadoresEq2){
+                        System.out.println(unJugador.Goleadores());
+                    }
                     break;
                 case 3:
                     fin = 0;
