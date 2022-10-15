@@ -2,6 +2,7 @@ package com.paquete.metodos;
 
 import com.paquete.Principal;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 import com.paquete.clases.*;
@@ -551,10 +552,22 @@ public class Controladora {
         System.out.println("Ingrese los minutos que duro el partido (Formato del ingreso de minutos 00:00)");
         String minutos = scan.next();
         Partido.set_minutosJugados(minutos); // Cargamos los minutos jugados del partido.
+        int goleseq1 = 0;
+        int goleseq2 = 0;
+        for(Jugador Goleador : listaJugadoresGoleadoresEq1){
+            goleseq1 = goleseq1 + Goleador.get_gol();
+        }
+        for(Jugador Goleador : listaJugadoresGoleadoresEq2){
+            goleseq2 = goleseq2 + Goleador.get_gol();
+        }
         byte fin = - 1;
+        System.out.println("┌──────────────────────────┐");
+        System.out.println("│ ** Partido Finalizado ** │");
+        System.out.println("└──────────────────────────┘");
+        System.out.println(equipo1().get_nombre() + " " + goleseq1 +" - " + goleseq2 + " " + equipo2().get_nombre());
+        System.out.println("Duración " + partido().get_minutosJugados());
         while(fin != 0) {
             System.out.println("┌──────────────────────────┐");
-            System.out.println("│ ** Partido Finalizado ** │");
             System.out.println("│    1- Listar Jugadores   │");
             System.out.println("│    2- Listar Goleadores  │");
             System.out.println("│    3-     Salir          │");
