@@ -38,7 +38,7 @@ public class Controladora {
         System.out.println("┌──────────────────────┐");
         System.out.println("│ Ingrese los árbitros │"); // Solicita los datos necesarios para ingresar los 3 arbitros
         System.out.println("└──────────────────────┘");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.println("** Nombre **");
             String nom = scan.next();
             System.out.println("** Apellido **");
@@ -47,7 +47,6 @@ public class Controladora {
             String puesto = scan.next();
             Arbitro arb = new Arbitro(nom, ape, puesto); // Instancia la clase Arbitro con los valores ingresados
             listaArbitral.add(arb); // Añade el arbitro ingresado a la lista de arbitros
-
         }
         return listaArbitral; // Retorna la lista de Arbitros
     }
@@ -73,7 +72,7 @@ public class Controladora {
         System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
         System.out.println("** Ingrese los Jugadores Titulares **"); // Pide ingresar los datos de los Jugadores Titulares del equipo 1
         System.out.println("");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 11; i++) {
             System.out.println("** Ingrese el nombre del jugador **");
             String nombreTitular = scan.next();
 
@@ -113,7 +112,7 @@ public class Controladora {
         System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
         System.out.println("** Ingrese los datos de los jugadores suplentes **"); // Solicitamos los datos de los jugadores suplentes.
         System.out.println("");
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("** Ingrese el nombre del jugador **");
             String nombreSuplente = scan.next();
 
@@ -153,7 +152,7 @@ public class Controladora {
         Equipo team = new Equipo((byte) 1, nombre, listaJugadoresTitularesEq1, listaJugadoresSuplentesEq1, TecnicoEq1);
         Equipo1 = team; // Le asignamos el valor del Equipo 1 instanciado a una instancia global de la clase Equipo 1
 
-        if (TecnicoEq1 != null && listaJugadoresTitularesEq1.size() == 2 && listaJugadoresSuplentesEq1.size() == 1) {
+        if (TecnicoEq1 != null && listaJugadoresTitularesEq1.size() == 11 && listaJugadoresSuplentesEq1.size() == 5) {
             // Si las listas de jugadores titulares y la de jugadores suplentes esta completa retornamos, true
             return true;
         }
@@ -182,7 +181,7 @@ public class Controladora {
         System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
         System.out.println("** Ingrese los Jugadores Titulares **"); // Solicita ingresar los datos de los Jugadores Titulares del equipo 2
         System.out.println("");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 11; i++) {
             System.out.println("** Ingrese el nombre del jugador **");
             String nombreTitular = scan.next();
 
@@ -222,7 +221,7 @@ public class Controladora {
         System.out.println("*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*─*");
         System.out.println("Ingrese los datos de los jugadores suplentes"); // Solicitamos los datos de los jugadores suplentes.
         System.out.println("");
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("Ingrese el nombre del jugador");
             String nombreSuplente = scan.next();
 
@@ -262,7 +261,7 @@ public class Controladora {
         Equipo team = new Equipo((byte) 1, nombre, listaJugadoresTitularesEq2, listaJugadoresSuplentesEq2, TecnicoEq2);
         Equipo2 = team; // Le asignamos el valor del Equipo 2 instanciado a una instancia global de la clase Equipo 2
 
-        if (TecnicoEq2 != null && listaJugadoresTitularesEq2.size() == 2 && listaJugadoresSuplentesEq2.size() == 1) {
+        if (TecnicoEq2 != null && listaJugadoresTitularesEq2.size() == 11 && listaJugadoresSuplentesEq2.size() == 5) {
             return true; // Si las listas de jugadores titulares y la de jugadores suplentes esta completa retornamos, true
         }
         return false; // De lo contrario retornamos, false
