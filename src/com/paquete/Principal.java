@@ -27,12 +27,12 @@ public class Principal {
         System.out.println("│      Por favor ingrese     │");
         System.out.println("│           Equipo 1         │");
         System.out.println("└────────────────────────────┘");
-        equipo1 = scan.nextLine();
+        equipo1 = scan.nextLine(); // Solicitamos que ingrese el nombre del equipo 1.
         System.out.println("┌────────────────────────────┐");
         System.out.println("│      Por favor ingrese     │");
         System.out.println("│           Equipo 2         │");
         System.out.println("└────────────────────────────┘");
-        equipo2 = scan.nextLine();
+        equipo2 = scan.nextLine(); // Solicitamos que ingrese el nombre del equipo 2.
         byte fin = 1;
         while (fin != 0) {
             System.out.println("┌────────────────────────────────┐");
@@ -45,7 +45,7 @@ public class Principal {
             switch (opcion) {
                 case 1:
                     if (partido == false) {
-                        Controladora.agregarPartido();
+                        Controladora.agregarPartido(); // Invocamos el método para agregar el partido.
                         partido = true;
                     } else {
                         System.out.println("Los datos del partido ya fueron ingresados");
@@ -53,8 +53,8 @@ public class Principal {
                     break;
                 case 2:
                     if (plantilla == false) {
-                        boolean eq1 = Controladora.ingresarEquipo1();
-                        boolean eq2 = Controladora.ingresarEquipo2();
+                        boolean eq1 = Controladora.ingresarEquipo1(); // Invocamos el método para ingresar el equipo 1.
+                        boolean eq2 = Controladora.ingresarEquipo2(); // Invocamos el método para ingresar el equipo 2.
                         Equipo1 = Controladora.equipo1();
                         Equipo2 = Controladora.equipo2();
                         if (eq1 == true && eq2 == true)
@@ -65,7 +65,7 @@ public class Principal {
                     break;
                 case 3:
                     if (arbitral == false) {
-                        listaArbitral = Controladora.agregarArbitros();
+                        listaArbitral = Controladora.agregarArbitros();  // Invocamos el método para agregar la terna arbitral.
                         arbitral = true;
                     } else {
                         System.out.println("El arbitral ya fue ingresado");
@@ -73,7 +73,7 @@ public class Principal {
                     break;
                 case 0:
                     if (plantilla == true && arbitral == true && partido == true) {
-                        inicioPartido();
+                        inicioPartido(); // Invocamos el método para iniciar el partido.
                         fin = 0;
                     } else {
                         System.out.println("Faltan datos");
@@ -99,16 +99,16 @@ public class Principal {
             byte opcion = scan.nextByte();
             switch (opcion) {
                 case 1:
-                    Controladora.listarEncuentro();
+                    Controladora.listarEncuentro(); // Invocamos el método para listar el encuentro.
                     break;
                 case 2:
-                    Controladora.cambiarJugador();
+                    Controladora.cambiarJugador(); // Invocamos el método para cambiar jugadores.
                     break;
                 case 3:
-                    Controladora.expulsarJugador();
+                    Controladora.expulsarJugador(); // Invocamos el método para expulsar jugadores.
                     break;
                 case 4:
-                    Controladora.marcarGol();
+                    Controladora.marcarGol(); // Invocamos el método para asignar los goles.
                     break;
                 case 0:
                     fin = 0;
@@ -118,6 +118,6 @@ public class Principal {
                     break;
             }
         }
-        Controladora.finalizarPartido();
+        Controladora.finalizarPartido(); // Invocamos el método para finalizar el partido.
     }
 }
